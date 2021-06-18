@@ -3,6 +3,7 @@
 *.log
 **/*.history
 **/.idea/*
+**/venv/*
 *.iml
 
 # BlueJ files

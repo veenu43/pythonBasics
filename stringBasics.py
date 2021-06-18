@@ -47,5 +47,10 @@ print(m.split('@@@'))
 indented='\t This will be indented\t sdfsdf'
 print(indented)
 
-num1=input("num: ")
+num1 = input("num: ")
 print(num1)
+
+num2 = eval(input("num: "))
+print(num2)
+
+1
