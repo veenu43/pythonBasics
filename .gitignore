@@ -4,6 +4,7 @@
 **/*.history
 **/.idea/*
 **/venv/*
+**/testpkg/*
 *.iml
 
 # BlueJ files
