@@ -7,6 +7,7 @@ print(employe[1])
 
 emp= 'task1','task2','task3'
 print(emp)
+print(type(emp))
 
 tuple_name = tuple('vinit kumar')
 print(tuple_name)

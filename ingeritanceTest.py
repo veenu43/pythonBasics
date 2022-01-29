@@ -4,10 +4,13 @@ class A:
 class B(A):
     y=20
 
-class C(A):
+class C(B):
     z=30
 
-class D(C,B):
+class C1(A):
+    z=10
+
+class D(C1,C):
     def add(self):
         print(self.x+self.y)
 

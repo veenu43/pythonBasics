@@ -1,4 +1,4 @@
-'''
+
 def square(num):
     return num ** 2
 
@@ -26,7 +26,7 @@ print('The filtered vowels are:')
 for vowel in filteredVowels:
     print(vowel)
 
-'''
+
 #Reduce
 from functools import reduce
 input_list = range(1,15)
