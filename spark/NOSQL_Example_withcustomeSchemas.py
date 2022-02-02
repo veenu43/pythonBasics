@@ -16,7 +16,7 @@ def main():
          StructField("CountryID", StringType(), True), StructField("Title", StringType(), True),
          StructField("PhoneNo", StringType(), True)])
 
-    df = (spark.read.schema(custschema).option("header", "true").csv(inputFilePath))
+    df = (spark.read.schema(custschema).option("header", "false").csv(inputFilePath))
 
     #Show only CustomerID, CustomerName and Age
     #df.select("Customerid", "CustName", "Age").show(200, False)
@@ -28,7 +28,32 @@ def main():
     #df.printSchema()
 
     #Retrieving data from the Customers Dataset & displaying sorted on Customer Name
-    df.orderBy("CustName").show()
+    #df.orderBy("CustName").show()
+    # order by desccending
+    #df.orderBy(desc("CustName")).show()
+
+    # Filter
+    #df.filter("Age > 30").show()
+    #df.filter("Gender = 'F'").show()
+    #df.filter("Gender = 'F' AND Age > 30").show()
+    #df.filter("Gender = 'F' AND Age > 30 AND CustName LIKE 'C%'").show()
+    #df.filter("Gender = 'F' AND Age > 30 AND CustName LIKE 'C%'").orderBy(desc("Age")).show()
+
+    #Aggregation
+    #print(df.filter("Age > 50").count())
+    #print(df.agg(sum("Age")).first()[0])
+    #rint(df.filter("Age > 50").agg(sum("Age")).first()[0])
+
+    #Complex
+    #df.groupBy("MemCat").sum("AmtSpent").show(200, False)
+    #df.filter("Age > 50").groupBy("Gender").sum("AmtSpent").show(200, False)
+    #df.groupBy("Gender", "Age").sum("AmtSpent").orderBy ("Gender", "Age").show(200, False)
+
+    #RollUp
+    #df.rollup("Gender", "Age").sum("AmtSpent").orderBy("Gender", "Age").show(200, False)
+
+    #Cube
+    df.cube("Gender", "Age").sum("AmtSpent").orderBy("Gender", "Age").show(200, False)
 
 if __name__ == '__main__':
     main()
