@@ -27,6 +27,7 @@ def main():
     #PrintSchema
     #df.printSchema()
 
+
     #Retrieving data from the Customers Dataset & displaying sorted on Customer Name
     #df.orderBy("CustName").show()
     # order by desccending
@@ -53,7 +54,19 @@ def main():
     #df.rollup("Gender", "Age").sum("AmtSpent").orderBy("Gender", "Age").show(200, False)
 
     #Cube
-    df.cube("Gender", "Age").sum("AmtSpent").orderBy("Gender", "Age").show(200, False)
+    #df.cube("Gender", "Age").sum("AmtSpent").orderBy("Gender", "Age").show(200, False)
+
+    #Getting the Standard Deviation of a field
+    #std = df.agg(stddev_pop("AmtSpent")).first()[0]
+    #print(std)
+
+    #Skewness of a field
+    #skw = df.agg(skewness("AmtSpent")).first()[0]
+    #print(skw)
+
+    #common statistical data of certain fields
+    df.describe("MemCat", "Gender", "AmtSpent", "Age").show()
+
 
 if __name__ == '__main__':
     main()
