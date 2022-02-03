@@ -19,8 +19,8 @@ def main():
     inputFilePathMovies = "D:\\Workspace\\pthonTest\\pthonTest\\spark\\BEAD_DATA-master\\BEAD_DATA-master\\\MoviesV2.csv"
     dfMovies = (spark.read.option("header", "true").option("inferSchema", "true").csv(inputFilePathMovies))
 
-    joinDF = dfProducer.join(dfMovies,"ProducerCode").show()
-    joinDF.show("ProducerName","Location","MovieTitle","MovieType").show()
+    joinDF = dfProducer.join(dfMovies,"ProducerCode")
+    joinDF.select("ProducerName","Location","MovieTitle","MovieType").show(50,False)
 
 if __name__ == '__main__':
     main()
