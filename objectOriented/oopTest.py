@@ -5,11 +5,11 @@ class Bank:
     COUNT=0
 
    def __init__(self,name=None,balance=None):
-   if(name is not None):
-        self.accholderName=name
-    if(balance is not None):
-        self.balance=balance
-    Bank.COUNT+=1
+       if(name is not None):
+            self.accholderName = name
+        if(balance is not None):
+            self.balance=balance
+        Bank.COUNT+=1
 
     def deposit(self,amount):
         self.balance=self.balance+amount

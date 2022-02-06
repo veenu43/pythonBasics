@@ -17,3 +17,18 @@ print("Squares:'",sq)
 sqsq = [sq*2 for sq in [num ** 2 for num in range(11)]]
 print("Doubel sq:",sqsq)
 print()
+
+
+fruitsList = ["Apple","AMango","Grapes"]
+
+newFruitList = [ fruit for fruit in fruitsList if fruit[:1] == "A"]
+print(newFruitList)
+
+
+list1 = ["Apple","Mango","Grapes","wedfwe00","wdrwqerwqerw000"]
+
+fruitsList = ["Apple","Mango","Grapes"]
+
+newList = filter( lambda item: item in fruitsList,list1)
+print(list(newList))
+print(newList)

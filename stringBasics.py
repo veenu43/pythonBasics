@@ -53,4 +53,3 @@ print(num1)
 num2 = eval(input("num: "))
 print(num2)
 
-1
