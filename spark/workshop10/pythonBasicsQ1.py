@@ -32,11 +32,29 @@ print(text1.format(planet = "Earth",diameter = 12742))
 
 # d) Given the name list, use indexing to grab word “target”, the_list = [1,2,[3,4],[5,[100,200,['target']],23,11],1,7]
 the_list = [1,2,[3,4],[5,[100,200,['target']],23,11],1,7]
-#print(the_list.index(['target']))
+print(type(the_list))
+
+def findItem(data):
+    itemIndex =-1;
+    for item in data:
+        itemIndex = itemIndex+1
+        if(isinstance(item,list)):
+            findItem(item)
+        elif(isinstance(item,str) and  item.count('target') >0):
+            print(f"String value {item}")
+            if(item == 'target'):
+                break
+    return itemIndex
+#Find Index
+print(findItem(the_list))
+
+#find by index
+print(the_list[3][1][2][0])
 
 
 # e) Given this nest dictionary grab the work “hello”. The_dic = {'k1':[1,2,3,{'tricky':['oh','man','inception',{'target':[1,2,3,'hello']}]}]}
-
+The_dic = {'k1':[1,2,3,{'tricky':['oh','man','inception',{'target':[1,2,3,'hello']}]}]}
+print(The_dic['k1'][3]["tricky"][3]["target"][3])
 
 # f) Create a basic function that returns True if the word 'elephant' is contained in the input string.
 # Don't worry about edge cases like a punctuation being attached to the word dog, but do account for capitalization.
@@ -56,7 +74,7 @@ def countElephant(s):
     return s.count("elephant")
 
 print("Count: ", countElephant("jhghjelephant"))
-print("Count: ", countElephant("jhghj elephant"))
+print("Count: ", countElephant("jhghj elephant wertwe qwrqwr elephant Elephant"))
 print("Count: ", countElephant("jhghj Elephant"))
 
 # h) Write a function to return one of 3 possible results: "Low speed", "Medium speed", or "Fast speed".
