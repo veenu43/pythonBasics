@@ -12,7 +12,7 @@ def isNotHeader(l:str):
     return not (l[0:11] == "CountryCode" and l.find("Currency")>0)
 # Configure Spark
 conf = SparkConf().setAppName("Create RDD")
-conf = conf.setMaster("local[*]")
+conf = conf.setMaster("local[*]").set("spark.driver.bindAddress","localhost").set("spark.ui.port","4050")
 spark = SparkContext(conf=conf)
 spark.setLogLevel("INFO")
 # Logs

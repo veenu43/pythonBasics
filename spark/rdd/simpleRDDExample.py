@@ -6,9 +6,9 @@ from pyspark.sql.types import *
 def main():
     # Configure Spark
     conf = SparkConf().setAppName("Create RDD")
-    conf = conf.setMaster("local[*]")
+    conf = conf.setMaster("local[*]").set("spark.driver.bindAddress","localhost").set("spark.ui.port","4050")
     spark = SparkContext(conf=conf)
-    spark.setLogLevel("ERROR")
+    spark.setLogLevel("INFO")
 
     baseRdd1 = spark.parallelize(["hello", "hi", "suria", "big", "data", "hub", "hub", "hi"])
     print(f"baseRdd1 : '{baseRdd1.collect()}'")
@@ -47,5 +47,7 @@ def main():
     print(takeValues)
     print("Take Sample Values..")
     print(takeSample)
+    input("Press enter to terminate")
+
 if __name__ == '__main__':
     main()
