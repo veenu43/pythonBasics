@@ -12,9 +12,9 @@ def main():
     # in Python from a local collection
     myCollection = "Spark RDD is for any text, structured or unstructured - Big Data Processing".split(" ")
 
-    #parallelize will help to convert a dataset or collection to RDD
+    # parallelize will help to convert a dataset or collection to RDD
     words = spark.parallelize(myCollection, 2)
-    upeerWords = words.map(lambda x : x.upper()).take(14);
+    upeerWords = words.map(lambda x: x.upper()).take(14);
     print(words)
     print(type(words))
     print(words.collect())
