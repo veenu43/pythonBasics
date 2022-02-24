@@ -13,9 +13,8 @@ soup = BeautifulSoup(page.content, "html.parser")
 results = soup.find(id="ResultsContainer")
 #print(results.prettify())
 
-
-#Find Elements by HTML Class Name
 job_elements = results.find_all("div", class_="card-content")
+#Find Elements by HTML Class Name
 for job_element in job_elements:
     title_element = job_element.find("h2", class_="title")
     company_element = job_element.find("h3", class_="company")
