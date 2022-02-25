@@ -1,6 +1,10 @@
 from nltk.corpus import sentiwordnet as swn
 from nltk.sentiment import vader
+from string import  punctuation
+from nltk.corpus import stopwords
 import nltk
+
+stopwords = set(stopwords.words('english')+list(punctuation))
 
 positiveReviewsFileName = "D:\\DataSets\\rt-polaritydata\\rt-polarity.pos"
 with open(positiveReviewsFileName, 'r') as f:
@@ -46,19 +50,24 @@ def superNaiveSentiment(review):
     reviewPolarity = 0.0
     numExceptions = 0
     for word in review.lower().split():
+        numMeanings =0
+        if word in stopwords:
+            continue
         weight = 0.0
         try:
-            common_meaning = list(swn.senti_synsets(word))[0]
-            #print(f"common_meaning: {common_meaning} ")
-            if(common_meaning.pos_score() > common_meaning.neg_score()):
-                weight = weight + common_meaning.pos_score()
-            elif common_meaning.pos_score() < common_meaning.neg_score():
-                weight = weight - common_meaning.neg_score()
+            for meaning in swn.senti_synsets(word):
+                if meaning.pos_score() > meaning.neg_score():
+                    weight = weight + (meaning.pos_score() - meaning.neg_score())
+                    numMeanings = numMeanings + 1
+                elif meaning.pos_score() < meaning.neg_score():
+                    weight = weight -(meaning.neg_score() - meaning.pos_score())
+                    numMeanings = numMeanings + 1
         except Exception as e:
             numExceptions = numExceptions +1
             #print(e)
         #print(f"Word: {word} weight: {str(weight)}")
-        reviewPolarity = reviewPolarity+weight
+        if numMeanings >0 :
+                reviewPolarity = reviewPolarity+ (weight/numMeanings)
     return reviewPolarity
 
 
