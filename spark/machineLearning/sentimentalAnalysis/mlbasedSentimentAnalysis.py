@@ -73,8 +73,8 @@ def naiveBayessSentimentCalculator(review):
     problemFeatures = extract_features(problemInstance)
     return trainedNBCClassifier.classify(problemFeatures)
 
-print("What an Awesome Moview",naiveBayessSentimentCalculator("What an Awesome Moview"))
-print("What an terrible Moview",naiveBayessSentimentCalculator("What an terrible Moview"))
+print("What an Awesome Moview",naiveBayessSentimentCalculator("What an Awesome Movie"))
+print("What an terrible Moview",naiveBayessSentimentCalculator("What an terrible Movie"))
 
 def getTestReviewSentiments(naiveBayesSentimentCalculator):
     testNegResults = [naiveBayesSentimentCalculator(review) for review in testNegativeReviews]
@@ -97,3 +97,4 @@ def runDiagnopstics(reviewResult):
     print("Accuracy on negative reviews = " + "%.2f" % (pctTrueNegative * 100) + "%")
     print("Overall accuracy  = " + "%.2f" % (totalAccurate*100/total) + "%")
 
+runDiagnopstics(getTestReviewSentiments(naiveBayessSentimentCalculator))
