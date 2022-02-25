@@ -44,7 +44,7 @@ def runDiagnopstics(reviewResult):
 
 # Build a binary Classifier using Sentiwordnet
 # Run this classifier on our corpus of reviews
-#Compare accuracy of VADER and Sentiwordnet-based classifiers
+# Compare accuracy of VADER and Sentiwordnet-based classifiers
 
 def superNaiveSentiment(review):
     reviewPolarity = 0.0
