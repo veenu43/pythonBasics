@@ -16,13 +16,6 @@ with open(negativeReviewsFileName, 'r') as f:
     negativeReviews = f.readlines()
     # print(negativeReviews)
 
-sia = vader.SentimentIntensityAnalyzer()
-
-
-def vadeSentiment(review):
-    return sia.polarity_scores(review)['compound']
-
-
 def getReviewSentiments(sentimentCalulator):
     negReviewResult = [sentimentCalulator(oneNegativeReview) for oneNegativeReview in negativeReviews]
     posReviewResult = [sentimentCalulator(onePositiveReview) for onePositiveReview in positiveReviews]

@@ -7,7 +7,7 @@ def main():
     cnfg = SparkConf().setAppName("CustomerApplication").setMaster("local[2]")
     sc = SparkContext(conf=cnfg)
     spark = SparkSession(sc)
-    inputFilePath = "D:\\Workspace\\pthonTest\\pthonTest\\spark\\BEAD_DATA-master\\BEAD_DATA-master\\\CustomerNoHdr.csv"
+    inputFilePath = "D:\\Workspace\\pthonTest\\pthonTest\\spark\\BEAD_DATA-master\\BEAD_DATA-master\\CustomerNoHdr.csv"
     custschema = StructType(
         [StructField("Customerid", IntegerType(), True), StructField("CustName", StringType(), True),
          StructField("MemCat", StringType(), True), StructField("Age", IntegerType(), True),
